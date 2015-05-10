@@ -26,9 +26,13 @@
         <td><%= home.province %></td>
         <td><%= home.country %></td>
         <td><%= home.description %></td>
-        <td><%= link_to 'Show', home %></td>
-        <td><%= link_to 'Edit', edit_home_path(home) %></td>
-        <td><%= link_to 'Destroy', home, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+	        <%= link_to 'Show', home %>
+			<% if home.user == current_user %>
+				<%= link_to 'Edit', edit_home_path(home) %>
+				<%= link_to 'Destroy', home, method: :delete, data: { confirm: 'Are you sure?' } %>
+			<% end %>
+		</td>
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +40,7 @@
 
 <br>
 
-<%= link_to 'New Home', new_home_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Home', new_home_path, class: "btn btn-primary" %>
+<% end %>
+

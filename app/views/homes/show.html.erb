@@ -35,5 +35,7 @@
   <%= @home.description %>
 </p>
 
-<%= link_to 'Edit', edit_home_path(@home) %> |
+<% if @home.user == current_user %>
+  <%= link_to 'Edit', edit_home_path(@home) %>
+<% end %>
 <%= link_to 'Back', homes_path %>
