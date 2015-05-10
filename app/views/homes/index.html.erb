@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Homes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address1</th>
+      <th>City</th>
+      <th>Postalcode</th>
+      <th>Province</th>
+      <th>Country</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @homes.each do |home| %>
+      <tr>
+        <td><%= home.name %></td>
+        <td><%= home.address1 %></td>
+        <td><%= home.city %></td>
+        <td><%= home.postalCode %></td>
+        <td><%= home.province %></td>
+        <td><%= home.country %></td>
+        <td><%= home.description %></td>
+        <td><%= link_to 'Show', home %></td>
+        <td><%= link_to 'Edit', edit_home_path(home) %></td>
+        <td><%= link_to 'Destroy', home, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Home', new_home_path %>
