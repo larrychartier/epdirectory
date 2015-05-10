@@ -9,14 +9,14 @@ class HomesController < ApplicationController
   end
 
   def new
-    @home = Home.new
+    @home = current_user.homes.build
   end
 
   def edit
   end
 
   def create
-    @home = Home.new(home_params)
+    @home = current_user.homes.build(home_params)
 
 	if @home.save
 		redirect_to @home, notice: 'Home was successfully created.'
@@ -35,13 +35,14 @@ class HomesController < ApplicationController
 
   def destroy
     @home.destroy
-	redirect_to homes_url, notice: 'Home was successfully destroyed.'
+	redirect_to homes_url, notice: 'Home was successfully deleted.'
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_home
-      @home = Home.find(params[:id])
+      @home = Home.find_by(id: params[:id])
+      redirect_to homes_path, notice: "Not authorized to edit this pin" if @home.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
