@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Image</th>
       <th>Name</th>
       <th>Address1</th>
       <th>City</th>
@@ -19,6 +20,7 @@
   <tbody>
     <% @homes.each do |home| %>
       <tr>
+        <td><%= image_tag home.image.url(:medium) %></td>
         <td><%= home.name %></td>
         <td><%= home.address1 %></td>
         <td><%= home.city %></td>

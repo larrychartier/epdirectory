@@ -1,6 +1,7 @@
 class HomesController < ApplicationController
   before_action :set_home, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update, :destroy]
+  #before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @homes = Home.all
@@ -18,7 +19,6 @@ class HomesController < ApplicationController
 
   def create
     @home = current_user.homes.build(home_params)
-
 	if @home.save
 		redirect_to @home, notice: 'Home was successfully created.'
 	else
@@ -43,11 +43,16 @@ class HomesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_home
       @home = Home.find_by(id: params[:id])
-      redirect_to homes_path, notice: "Not authorized to edit this pin" if @home.nil?
+      #redirect_to homes_path, notice: "Not authorized to edit this Home" if @home.nil?
+    end
+
+    def correct_user
+      @pin = current_user.homes.find_by(id: params[:id])
+      redirect_to homes_path, notice: "Not authorized to edit this Home" if @home.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def home_params
-      params.require(:home).permit(:name, :address1, :city, :postalCode, :province, :country, :description)
+		params.require(:home).permit(:name, :address1, :city, :postalCode, :province, :country, :description, :image)
     end
 end

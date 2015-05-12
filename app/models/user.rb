@@ -4,5 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :homes	         
+  has_many :homes	   
+  
+  #validates :name, presence: true               
 end
