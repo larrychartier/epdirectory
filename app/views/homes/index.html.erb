@@ -46,3 +46,5 @@
   <%= link_to 'New Home', new_home_path, class: "btn btn-primary" %>
 <% end %>
 
+
+<div class="center"> <%= will_paginate @homes, renderer: BootstrapPagination::Rails %> </div>
