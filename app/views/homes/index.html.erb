@@ -1,33 +1,54 @@
-<div class="container">
+
 	<div class="row">
-		<div class="col-xs-6 col-md-4">
-			test
+		<div class="col-xs-3">
+			<div class="well">
+				<h4 style="margin-top:0;">Quick Search</h4>
+				<br/>
+				<form>
+				  <div class="form-group">
+				    <label for="keyword">Keyword</label>
+				    <input type="email" class="form-control" id="keyword" placeholder="Keyword">
+				  </div>
+				  
+				  <div class="form-group">
+					  <label for="city">City</label>
+					  <select class="form-control" id="city">
+						  <option>City 1</option>
+						  <option>City 2</option>
+						  <option>City 3</option>
+						  <option>City 4</option>
+						  <option>City 5</option>
+						</select>
+				  </div>
+				
+				  
+				  <button type="submit" class="btn btn-primary">Submit</button>
+				</form>				
+			</div>
 		</div>
-		<div class="col-xs-12 col-sm-6 col-md-8">
+		<div class="col-xs-9">
 			
 			<p id="notice"><%= notice %></p>
 			
 			
 			<% @homes.each do |home| %>
-				<div class="row">
-				  <div class="col-xs-4">
-					  <%= image_tag home.image.url(:medium) %>
-				  </div>
-				  <div class="col-xs-8">
-						<%= home.name %><br />
-				        <%= home.address1 %><br />
-				        <%= home.city %><br />
-				        <%= home.postalCode %><br />
-				        <%= home.province %><br />
-				        <%= home.country %><br />
-				        <%= home.description %><br />
-				        
-				        <%= link_to 'Show', home %>
-						<% if home.user == current_user %>
-							<%= link_to 'Edit', edit_home_path(home) %>
-							<%= link_to 'Destroy', home, method: :delete, data: { confirm: 'Are you sure?' } %>
-						<% end %>
-				  </div>
+				<div class="well">
+					<div class="row">
+					  <div class="col-xs-3">
+						  <%= link_to image_tag(home.image.url(:medium)), home %>
+						 <!--<%= image_tag home.image.url(:medium) %>-->
+					  </div>
+					  <div class="col-xs-9">
+							<h2 style="margin-top:0;"><%= home.name %></h2>
+					        <p><%= home.address1 %>, <%= home.city %>, <%= home.province %></p>
+					        
+					        <%= link_to 'Show', home, class: "btn btn-info" %>
+							<% if home.user == current_user %>
+								<%= link_to 'Edit', edit_home_path(home), class: "btn btn-default" %>
+								<%= link_to 'Destroy', home, method: :delete, data: { confirm: 'Are you sure?' } %>
+							<% end %>
+					  </div>
+					</div>
 				</div>
 			 <% end %>
 			
@@ -41,4 +62,3 @@
 	
 	
 	<div class="center"> <%= will_paginate @homes, renderer: BootstrapPagination::Rails %> </div>
-</div>
