@@ -1,0 +1,19 @@
+<h1>Homes Search</h1>
+ 
+<%= form_for search_path, method: :get do |f| %>
+  <p>
+    <%= f.label "Search for" %>
+    <%= text_field_tag :q, params[:q] %>
+    <%= submit_tag "Go", name: nil %>
+  </p>
+<% end %>
+ 
+<ul>
+  <% @homes.each do |home| %>
+    <li>
+      <h3>
+        <%= link_to home.name, controller: "homes", action: "show", id: home._id%>
+      </h3>
+    </li>
+  <% end %>
+</ul>

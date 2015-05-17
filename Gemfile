@@ -17,7 +17,8 @@ gem 'paperclip', '~> 4.2'
 gem 'aws-sdk', '< 2.0'
 gem 'will_paginate', '~> 3.0.5'
 gem 'will_paginate-bootstrap'
-
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 
 group :development, :test do
   gem 'byebug'
