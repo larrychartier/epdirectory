@@ -19,7 +19,7 @@ gem 'will_paginate', '~> 3.0.5'
 gem 'will_paginate-bootstrap'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
-gem 'bonsai-elasticsearch-rails'
+
 
 group :development, :test do
   gem 'byebug'
@@ -31,5 +31,6 @@ end
 group :production do
 	gem 'pg'
 	gem 'rails_12factor'
+	gem 'bonsai-elasticsearch-rails'
 end
 
