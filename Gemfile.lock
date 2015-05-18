@@ -205,7 +205,7 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk (< 2.0)
-  bonsai-elasticsearch-rails
+  bonsai-elasticsearch-rails (~> 0.0.4)
   bootstrap-sass
   byebug
   coffee-rails (~> 4.1.0)

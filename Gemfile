@@ -31,6 +31,6 @@ end
 group :production do
 	gem 'pg'
 	gem 'rails_12factor'
-	gem 'bonsai-elasticsearch-rails'
+	gem 'bonsai-elasticsearch-rails', '~> 0.0.4'
 end
 

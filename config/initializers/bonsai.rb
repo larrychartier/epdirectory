@@ -7,3 +7,4 @@ else
   app_name = Rails.application.class.parent_name.underscore.dasherize
   BONSAI_INDEX_NAME = "#{app_name}-#{Rails.env}"
 end
+
